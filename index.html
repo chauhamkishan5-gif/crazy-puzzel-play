@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUMINA: Cyber Optics - Beam Logic Puzzle</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app-container">
+    <!-- Header HUD -->
+    <header class="hud">
+      <div class="brand">
+        <div class="brand-icon">L</div>
+        <div class="brand-title">LUMINA</div>
+      </div>
+
+      <div class="hud-info">
+        <div class="hud-stat">
+          <span class="stat-label">Level</span>
+          <span class="stat-value" id="level-title">First Light</span>
+        </div>
+        <div class="hud-stat">
+          <span class="stat-label">Moves</span>
+          <span class="stat-value">
+            <span id="moves-count">0</span>
+            <span id="moves-limit" style="font-size: 0.8rem; color: var(--text-muted);"></span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Anti-Frustration Kit Controls -->
+      <div class="hud-actions">
+        <button id="undo-btn" class="btn" title="Undo last move">
+          <span>↺</span> Undo
+        </button>
+        <button id="hint-btn" class="btn btn-hint" title="Smart Hint (Highlights next move)">
+          <span>💡</span> Hint
+        </button>
+        <button id="restart-btn" class="btn" title="Restart level">
+          <span>⟳</span> Restart
+        </button>
+        <button id="levels-btn" class="btn btn-primary" title="Select Level">
+          <span>☰</span> Levels
+        </button>
+        <button id="random-btn" class="btn btn-accent" title="Endless Procedural Level">
+          <span>🎲</span> Random
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Game Canvas -->
+    <main class="game-area">
+      <div class="canvas-wrapper">
+        <canvas id="gameCanvas"></canvas>
+      </div>
+    </main>
+  </div>
+
+  <!-- Level Selection Modal -->
+  <div id="levels-modal" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2 class="modal-title">Select Level Matrix</h2>
+        <button id="close-levels" class="close-btn">&times;</button>
+      </div>
+      <div id="world-tabs" class="world-tabs">
+        <!-- Dynamic World Tabs -->
+      </div>
+      <div id="level-grid" class="level-grid">
+        <!-- Dynamic Level Cards -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Victory Modal -->
+  <div id="victory-modal" class="modal-overlay">
+    <div class="modal-card victory-card">
+      <h2 class="victory-title">MATRIX ALIGNED!</h2>
+      <div id="victory-stars" class="victory-stars">
+        <span>★</span><span>★</span><span>★</span>
+      </div>
+      <p style="color: var(--text-muted); margin-bottom: 12px;">All optical energy target receptors successfully activated!</p>
+      <div style="display: flex; gap: 12px; justify-content: center;">
+        <button id="next-level-btn" class="btn btn-primary" style="padding: 12px 24px; font-size: 1.1rem;">
+          Next Matrix Level ➔
+        </button>
+        <button id="close-victory" class="btn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/audio.js"></script>
+  <script src="js/solver.js"></script>
+  <script src="js/levels.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
